@@ -3,14 +3,21 @@
     <h1>
       {{title}}
     </h1>
+    <Button/>
   </header>
 </template>
 
 <script>
+import Button from './Button.vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Header',
-  props: ['title']
+  components: {
+    Button
+  },
+  props: {
+    title: String
+  }
 
 }
 </script>
