@@ -1,12 +1,22 @@
 <template>
-  <button>Add button</button>
+  <button @click="onClick()" :style="{background: color}" class="btn">{{text}}</button>
 </template>
 
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Button'
-};
+  name: 'Button',
+  props: {
+    text: String,
+    color: String
+  },
+  methods: {
+    onClick () {
+      console.log('click')
+    }
+  }
+}
 </script>
 
-<style></style>
+<style>
+</style>
