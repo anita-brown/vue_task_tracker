@@ -1,25 +1,37 @@
 <template>
   <header>
-    <h1>
-      {{title}}
-    </h1>
-    <Button @btn-click="$emit('show-add-task')" :text="showAddTask ? 'Close' : 'Add Task'" :color="showAddTask ? 'red' : 'green'"/>
+    <h1>{{ title }}</h1>
+    <Button
+      v-show="homePage"
+      @btn-click="$emit('toggle-add-task')"
+      :text="showAddTask ? 'Close' : 'Add Task'"
+      :color="showAddTask ? 'red' : 'green'"
+    />
   </header>
 </template>
 
 <script>
-import Button from './Button.vue'
+import Button from './Button'
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Header',
-  components: {
-    Button
-  },
   props: {
     title: String,
     showAddTask: Boolean
+  },
+  components: {
+    Button
+  },
+  computed: {
+    homePage () {
+      if (this.$route.path === '/') {
+        return true
+      } else {
+        return false
+      }
+    }
   }
-
 }
 </script>
 
@@ -30,5 +42,4 @@ header {
   align-items: center;
   margin-bottom: 20px;
 }
-
 </style>
